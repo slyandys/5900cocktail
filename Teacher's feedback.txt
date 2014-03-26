@@ -1,0 +1,26 @@
+The program you sent seems like a promising start. It has some UI issues
+which translate into lack of clarity, making the game difficult to play,
+but should be straightforward to fix. The teaching mode also needs more
+feedback on the errors -- just telling the player that the mix is wrong
+doesn't help, you should give more specific instructions about what went
+wrong and advice about how to fix it.
+
+The main UI issue is the lack of feedback on player actions. In a real
+bartending scenario, you would be able to see how much liquid was in the
+glass, and whether you were starting with an empty glass or a partly filled
+glass. So, you should show some visual representation of the drink in
+progress: just a box with a colored rectangle showing the liquid rising up.
+Also, the bartender doesn't pour by clicking, but by pouring or spraying
+from a nozzle; rather than clicking, how about you hold down the mouse to
+slowly pour into a measuring cup? Then you can add the measure to the drink
+with a click. The measure would slowly fill; it would have markings on the
+side showing 0.5 oz, 1 oz, etc.
+
+Continuous rather than discrete pouring would better approximate the real
+task and also fit with your plan to have pouring based on physical actions
+with the cell phone.
+
+The key thing, though, is to have the visual depiction of the drink and the
+measure to add. Without this the game is very difficult to figure out.
+
+Hope this helps!
