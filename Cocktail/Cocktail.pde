@@ -53,6 +53,8 @@ void setup() {
   addItem = 0;
   //items = new String[3];
   //doses = new String[3];
+  
+  addRecipes();
 }
 
 void draw() {
