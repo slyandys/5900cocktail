@@ -16,7 +16,7 @@ void bartenMainView(int barlevel)
     rect(600, 450, 55, -clickdose);
     pushStyle();
     fill(0);
-    text("Dose:" + nf(clickdose*0.1,1,1) + " oz", 680, 440 - clickdose);
+    text("Dose:" + nf(clickdose*0.01,1,2) + " oz", 680, 440 - clickdose);
     popStyle();
     popStyle();
     
