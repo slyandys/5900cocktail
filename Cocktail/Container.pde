@@ -65,7 +65,7 @@ public class Container {
         switch(flags)
         {
         case 0:
-          if (ctail.cName.equals("Tequila") && ctail.cDose == 1.5) 
+          if (ctail.cName.equals("Tequila") && ctail.cDose >= 1.5*0.9 && ctail.cDose <= 1.5*1.1) 
           {
             println("BL correct~");
             iterator.remove();
@@ -85,7 +85,7 @@ public class Container {
           }
           break;
         case 1:
-          if (ctail.cName.equals("orange juice") && ctail.cDose == 4)
+          if (ctail.cName.equals("orange juice") && ctail.cDose >= 4*0.9 && ctail.cDose <= 4*1.1)
           {
             println("Ac correct~");
             iterator.remove();
@@ -103,7 +103,7 @@ public class Container {
           }
           break;
         case 2:
-          if (ctail.cName.equals("grenadine syrup") && ctail.cDose == 0.5)
+          if (ctail.cName.equals("grenadine syrup") && ctail.cDose >= 0.5*0.9 && ctail.cDose <= 0.5*1.1)
           {
             println("AC2 correct~");
             iterator.remove();

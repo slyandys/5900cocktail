@@ -46,22 +46,24 @@ void mouseReleased() {
       switch(itemChoose)
       {
       case 0:
-        container.addItemBL(itemName2, strength, colour, dose);
+        
+        container.addItemBL(itemName2, strength, colour, clickdose*0.1);//dose
         break;
       case 1:
-        container.addItemAc(itemName2, strength, colour, dose);
+        container.addItemAc(itemName2, strength, colour, clickdose*0.1);//dose
         break;
       default:
         println("nothing has added inside the container.");
         break;
       }
       flag = tag;
-      dose = 0;
+      clickdose = 0;
+      //dose = 0;
       addItem = 0;
     }
     else {
-      dose += 0.5; // each time the player click the rect can get 0.5oz/liquid or other accessories
-      println("dose use:" + dose);
+      //dose += 0.5; // each time the player click the rect can get 0.5oz/liquid or other accessories
+      println("dose use:" + clickdose*0.1);
     }
 
     if (!itemName2.equals(itemName))

@@ -4,23 +4,23 @@ void bartenMainView(int barlevel)
     setUpNewLiquid(barlevel);
     int i = 0;
     
-    //empty cup
+    //Empty cup
     pushStyle();
     fill(255);
-    rect(20, 50, 55, 100);
+    rect(600, 350, 55, 100);
     popStyle();
     
     
     pushStyle();
     fill(0);
-    rect(20, 150, 55, -clickdose);
-      pushStyle();
-      fill(0);
-      text("Dose:" + clickdose*0.1 + " oz", 120, 140 - clickdose);
-      popStyle();
-      popStyle();
+    rect(600, 450, 55, -clickdose);
+    pushStyle();
+    fill(0);
+    text("Dose:" + nf(clickdose*0.1,1,1) + " oz", 680, 440 - clickdose);
+    popStyle();
+    popStyle();
     
-    if (mouseX > 20 && mouseX < 75 && mouseY > 50 && mouseY < 150 && mousePressed)
+    if (mouseX > 600 && mouseX < 655 && mouseY > 350 && mouseY < 450 && mousePressed)
     {
       if(clickdose<100){
         clickdose+=1;
