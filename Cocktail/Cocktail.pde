@@ -59,6 +59,7 @@ void setup() {
   //doses = new String[3];
   
   addRecipes();
+  println(buildRecipePrompt(recip.get(0)));
 }
 
 void draw() {
