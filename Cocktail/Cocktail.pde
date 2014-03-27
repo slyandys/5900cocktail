@@ -29,6 +29,10 @@ int tag;
 int accuracy;
 Container container;
 
+//Visualiz
+float clickdose = 0.0;
+
+
 void setup() {
   size(800, 500);
   f = createFont("Arial", 16, true);

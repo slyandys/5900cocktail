@@ -3,6 +3,30 @@ void bartenMainView(int barlevel)
   showGameChallenge();
     setUpNewLiquid(barlevel);
     int i = 0;
+    
+    //empty cup
+    pushStyle();
+    fill(255);
+    rect(20, 50, 55, 100);
+    popStyle();
+    
+    
+    pushStyle();
+    fill(0);
+    rect(20, 150, 55, -clickdose);
+      pushStyle();
+      fill(0);
+      text("Dose:" + clickdose*0.1 + " oz", 120, 140 - clickdose);
+      popStyle();
+      popStyle();
+    
+    if (mouseX > 20 && mouseX < 75 && mouseY > 50 && mouseY < 150 && mousePressed)
+    {
+      if(clickdose<100){
+        clickdose+=1;
+      }
+    }
+    
 
     //Iterate the Base Liquid
     for (Iterator iterator = baseL.iterator(); iterator.hasNext();) {

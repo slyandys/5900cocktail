@@ -8,7 +8,8 @@ public class Recipe {
     itemDose = (ArrayList) dose.clone();
     println("item=" + itemName);
   }
-  Recipe(String[] name, float[] dose) {
+  Recipe(String ReceName, String[] name, float[] dose) {
+    rName = ReceName;
     itemName = (ArrayList<String>) new ArrayList();
     itemDose = (ArrayList<Float>) new ArrayList();
     for (String a_name : name){ //check if it works with processing.js
@@ -18,7 +19,9 @@ public class Recipe {
     for (Float a_dose: dose){
       itemDose.add(a_dose);
     }
-    println("item=" + itemName);
+    println("recipeName=" + rName);
+    println("itemlist=" + itemName);
+    println("itemdose=" + itemDose);
   }
 }
 
@@ -30,10 +33,10 @@ void addRecipes(){
   //this does NOT work. -LN
   //name = {"Tequila", "orange juice", "grenadine syrup"};
   //dose =  {0.5, 4.0, 0.5};
-  recip.add(new Recipe(sunrise_name, sunrise_dose));
+  recip.add(new Recipe("Sunrise Tequila",sunrise_name, sunrise_dose));
   //Blue Lagoon
   String[] lagoon_name = {"Vodka", "Blue Curacao", "Sprite"};
   float[] lagoon_dose = {1.0, 1.0, 10.0};
-  recip.add(new Recipe(lagoon_name, lagoon_dose));
+  recip.add(new Recipe("Blue Lagoon",lagoon_name, lagoon_dose));
   println("yay!");
 }
