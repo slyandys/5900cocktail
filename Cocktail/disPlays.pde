@@ -69,7 +69,7 @@ void showGameChallenge()
   {
   case 0:
     text("Challenge "+ barlevel +": Sunrise Tequila", width / 2, 140);
-    text("You will need: Tequila(0.5oz), orange juice(4oz),grenadine syrup(0.5oz)", width / 2, 160);
+    text("You will need: Tequila(1.5oz), orange juice(4oz),grenadine syrup(0.5oz)", width / 2, 160);
     break;
   case 1:
     text("Challenge "+ barlevel +": Blue Lagoon", width / 2, 140);
