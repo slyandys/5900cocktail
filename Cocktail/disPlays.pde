@@ -79,4 +79,11 @@ void showGameChallenge()
   text("Please mix them in order mentioned above", width / 2, 180);
 }
 
-
+String buildRecipePrompt(Recipe recipe){
+  String s = "You will need: ";
+  for (int i = 0; i < recipe.itemName.size() &&  i < recipe.itemName.size(); i++){
+    if (i != 0) {s += ", ";}
+    s += nf(recipe.itemDose.get(i), 1, 1) + "oz " + recipe.itemName.get(i);
+  }
+  return s;
+}
