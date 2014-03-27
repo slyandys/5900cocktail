@@ -13,16 +13,16 @@ void bartenMainView(int barlevel)
     
     pushStyle();
     fill(0);
-    rect(600, 450, 55, -clickdose);
+    rect(600, 450, 55, -clickdose/10);
     pushStyle();
     fill(0);
-    text("Dose:" + nf(clickdose*0.01,1,2) + " oz", 680, 440 - clickdose);
+    text("Dose:" + nf(clickdose*0.01,1,2) + " oz", 680, 440 - clickdose/10);
     popStyle();
     popStyle();
     
     if (mouseX > 600 && mouseX < 655 && mouseY > 350 && mouseY < 450 && mousePressed)
     {
-      if(clickdose<100){
+      if(clickdose<1000){
         clickdose+=1;
       }
     }

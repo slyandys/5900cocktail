@@ -8,16 +8,16 @@ public class Recipe {
     itemDose = (ArrayList) dose.clone();
     println("item=" + itemName);
   }
-  Recipe(String ReceName, String[] name, float[] dose) {
-    rName = ReceName;
+  Recipe(String recipeName, String[] names, float[] doses) {
+    rName = recipeName;
     itemName = (ArrayList<String>) new ArrayList();
     itemDose = (ArrayList<Float>) new ArrayList();
-    for (String a_name : name){ //check if it works with processing.js
-      itemName.add(a_name);
+    for (String name : names){ //check if it works with processing.js
+      itemName.add(name);
     }
     //itemDose = (ArrayList<Float>) new ArrayList(dose);
-    for (Float a_dose: dose){
-      itemDose.add(a_dose);
+    for (Float dose: doses){
+      itemDose.add(dose);
     }
     println("recipeName=" + rName);
     println("itemlist=" + itemName);
