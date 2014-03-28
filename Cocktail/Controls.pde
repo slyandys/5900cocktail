@@ -49,6 +49,7 @@ void mouseReleased() {
     println("Liquid use:"+itemName);
     println("Last Liquid use:"+itemName2);
     println("Tag use:"+tag);
+    dragdose = 0;
     if(!dragable){
       dragposY = mouseY;
       dragable = true;
