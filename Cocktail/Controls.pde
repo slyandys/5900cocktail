@@ -29,6 +29,19 @@ void keyPressed() {
   }
 }
 
+
+void mousePressed()
+{
+  println("Tag use:"+tag);
+  bartenMainViewHitTest();
+
+  if(tag != -1)
+  {
+    dragposY = mouseY;
+    dragdose = 0;
+  }
+}
+
 void mouseReleased() {
   if (overBox) {
     //fill(255, 255, 255);
@@ -38,7 +51,13 @@ void mouseReleased() {
     println("insight");
     println("Liquid use:"+itemName);
     println("Last Liquid use:"+itemName2);
-    println("Tag use:"+tag);
+    println("~Tag use:"+tag);
+    dragdose = 0;
+    if(!dragable){
+      dragposY = mouseY;
+      dragable = true;
+    }
+    
 
     //if(flag != tag){
     if (addItem == 1) {
@@ -46,11 +65,12 @@ void mouseReleased() {
       switch(itemChoose)
       {
       case 0:
-        
         container.addItemBL(itemName2, strength, colour, clickdose*0.01);//dose
+        dragdose = 0;
         break;
       case 1:
         container.addItemAc(itemName2, strength, colour, clickdose*0.01);//dose
+        dragdose = 0;
         break;
       default:
         println("nothing has added inside the container.");
@@ -76,6 +96,17 @@ void mouseReleased() {
   }
   else {
     println("outsight");
+    //mousedragg tag: use to recognize the liquids
+    tag = -1;
+    println("tag===" + tag);
+  }
+}
+
+void mouseDragged(){
+  if(dragable)
+  {
+    //clickdose += (mouseY -dragposY)/10;
+    dragdose = (mouseY - dragposY)/10; 
   }
 }
 

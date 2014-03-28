@@ -1,7 +1,9 @@
 void bartenMainView(int barlevel)
 {
+  clickdose += dragdose;
+  
   showGameChallenge();
-    setUpNewLiquid(barlevel);
+    //setUpNewLiquid(barlevel);
     int i = 0;
     
     //Empty cup
@@ -12,7 +14,7 @@ void bartenMainView(int barlevel)
     
     
     pushStyle();
-    fill(0);
+    fill(colour);
     rect(600, 450, 55, -clickdose/10);
     pushStyle();
     fill(0);
@@ -27,12 +29,28 @@ void bartenMainView(int barlevel)
       }
     }
     
+    i = 0;
+    for(BaseLiquid bsl : baseL){
+      bsl.show(i);
+      i += 120;
+    }
+    i = 0;
+    for(Accessories acs : accessor){
+      acs.show(i);
+      i += 120;
+    }
 
+  mixRect();
+
+}
+
+void bartenMainViewHitTest(){
+  int i = 0;
     //Iterate the Base Liquid
     for (Iterator iterator = baseL.iterator(); iterator.hasNext();) {
       BaseLiquid bsl = (BaseLiquid) iterator.next();
       bsl.show(i);
-      iterator.remove();
+      //iterator.remove();
       if (mouseX > (50 + i) && mouseX < (50 + i) + 50 && 
         mouseY > 300 && mouseY < 300+50 && mousePressed) {
         itemName = bsl.Name;
@@ -52,12 +70,12 @@ void bartenMainView(int barlevel)
     for (Iterator iterator = accessor.iterator(); iterator.hasNext();) {
       Accessories acs = (Accessories) iterator.next();
       acs.show(i);
-      iterator.remove();
+      //iterator.remove();
       if (mouseX > (50+ i) && mouseX < (50 + i) + 50 && 
         mouseY > 370 && mouseY < 370+50 && mousePressed) {
 
         itemName = acs.Name;
-        strength = acs.Saccharinity;
+        strength = acs.Strength;
         colour = acs.Colour;
         itemChoose = 1;
         tag = i*2 + 1;
@@ -66,11 +84,11 @@ void bartenMainView(int barlevel)
       }
       i += 120;
    }
-  mixRect();
   if (mouseX > 720 && mouseX < 770 && mouseY > 435 && mouseY < 485 && mousePressed)
   {
       overBox = true;
       addItem = 1;
       startTime = millis();
+      println("overbox");
   }
 }

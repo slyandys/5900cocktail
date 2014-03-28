@@ -31,7 +31,11 @@ Container container;
 
 //Visualiz
 float clickdose = 0.0;
+int dragposY = 0;
+Boolean dragable = true;
+float dragdose = 0.0;
 
+//✓
 
 void setup() {
   size(800, 500);
@@ -58,7 +62,9 @@ void setup() {
   //items = new String[3];
   //doses = new String[3];
   
+  
   addRecipes();
+  setUpNewLiquid(barlevel);
   println(buildRecipePrompt(recip.get(0)));
 }
 
@@ -114,10 +120,12 @@ void FreeStyle() {
 }
 
 void setUpNewLiquid(int barlevel) {
+  baseL.clear();
+  accessor.clear();
+  
   //level 0 cocktail recipes
   if (barlevel == 0) {
     baseL.add(new BaseLiquid("Tequila", 38, 200));
-    baseL.add(new BaseLiquid("Vodka", 45, 155));
     accessor.add(new Accessories("orange juice", 2, 100));
     accessor.add(new Accessories("grenadine syrup", 4, 120));
   }

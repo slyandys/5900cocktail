@@ -28,7 +28,7 @@ public class Recipe {
 void addRecipes(){
   //Sunrise Tequila
   String[] sunrise_name = {"Tequila", "orange juice", "grenadine syrup"};
-  float[] sunrise_dose = {0.5, 4.0, 0.5};
+  float[] sunrise_dose = {1.5, 4.0, 0.5};
   
   //this does NOT work. -LN
   //name = {"Tequila", "orange juice", "grenadine syrup"};
