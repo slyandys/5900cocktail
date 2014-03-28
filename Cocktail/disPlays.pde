@@ -65,18 +65,19 @@ void victory(int barlevel)
 void showGameChallenge()
 {
   text("level:" + barlevel, width / 2, 50);
-  switch(barlevel)
+  
+  if (barlevel < recip.size())
   {
-  case 0:
-    text("Challenge "+ barlevel +": Sunrise Tequila", width / 2, 140);
-    text("You will need: Tequila(1.5oz), orange juice(4oz),grenadine syrup(0.5oz)", width / 2, 160);
-    break;
-  case 1:
-    text("Challenge "+ barlevel +": Blue Lagoon", width / 2, 140);
-    text("You will need: Vodka(1.0oz), Blue Curacao(1.0oz),Sprite(10.0oz)", width / 2, 160);
-    break;
+    Recipe recipe = recip.get(barlevel);
+    text(buildNamePrompt(barlevel, recipe), width / 2, 140);
+    text(buildRecipePrompt(recipe), width / 2, 160);
   }
   text("Please mix them in order mentioned above", width / 2, 180);
+}
+
+String buildNamePrompt(int level, Recipe recipe){
+  String s = "Challenge" + barlevel + ": "+recipe.rName;
+  return s;
 }
 
 String buildRecipePrompt(Recipe recipe){
