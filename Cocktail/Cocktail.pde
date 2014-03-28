@@ -61,7 +61,9 @@ void setup() {
   //items = new String[3];
   //doses = new String[3];
   
+  
   addRecipes();
+  setUpNewLiquid(barlevel);
   println(buildRecipePrompt(recip.get(0)));
 }
 

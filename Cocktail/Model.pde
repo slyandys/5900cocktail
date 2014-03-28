@@ -3,7 +3,7 @@ void bartenMainView(int barlevel)
   clickdose += dragdose;
   
   showGameChallenge();
-    setUpNewLiquid(barlevel);
+    //setUpNewLiquid(barlevel);
     int i = 0;
     
     //Empty cup
@@ -34,7 +34,7 @@ void bartenMainView(int barlevel)
     for (Iterator iterator = baseL.iterator(); iterator.hasNext();) {
       BaseLiquid bsl = (BaseLiquid) iterator.next();
       bsl.show(i);
-      iterator.remove();
+      //iterator.remove();
       if (mouseX > (50 + i) && mouseX < (50 + i) + 50 && 
         mouseY > 300 && mouseY < 300+50 && mousePressed) {
         itemName = bsl.Name;
@@ -54,12 +54,12 @@ void bartenMainView(int barlevel)
     for (Iterator iterator = accessor.iterator(); iterator.hasNext();) {
       Accessories acs = (Accessories) iterator.next();
       acs.show(i);
-      iterator.remove();
+      //iterator.remove();
       if (mouseX > (50+ i) && mouseX < (50 + i) + 50 && 
         mouseY > 370 && mouseY < 370+50 && mousePressed) {
 
         itemName = acs.Name;
-        strength = acs.Saccharinity;
+        strength = acs.Strength;
         colour = acs.Colour;
         itemChoose = 1;
         tag = i*2 + 1;

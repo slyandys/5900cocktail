@@ -79,6 +79,7 @@ public class Container {
           if (flags >= targetRecipe.itemDose.size())
           {
             barlevel++;
+            setUpNewLiquid(barlevel);
           }
       } 
       else 
