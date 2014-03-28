@@ -1,5 +1,5 @@
 //Base Liquor Property
-public class BaseLiquid {
+public class BaseLiquid extends Ingredient {
   String Name;   //the name of the base liquid
   int Strength;  //the percentage of alcoholic in the base-liquid
   int Colour;    //the color of the liquid
