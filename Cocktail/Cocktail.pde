@@ -31,6 +31,9 @@ Container container;
 
 //Visualiz
 float clickdose = 0.0;
+int dragposY = 0;
+Boolean dragable = false;
+float dragdose = 0.0;
 
 
 void setup() {
