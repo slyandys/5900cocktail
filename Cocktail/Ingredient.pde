@@ -5,4 +5,14 @@ public class Ingredient {
   
   void show(int pos) {
   }
+  boolean hitTest(int i, int j, int X, int Y){
+    if ( X > (50 + i) && mouseX < (50 + i) + 50 && 
+        Y > (300 + j) && mouseY < (300+ j +50) ) 
+    {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 }

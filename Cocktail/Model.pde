@@ -14,7 +14,7 @@ void bartenMainView(int barlevel)
     
     
     pushStyle();
-    fill(0);
+    fill(colour);
     rect(600, 450, 55, -clickdose/10);
     pushStyle();
     fill(0);
@@ -29,7 +29,23 @@ void bartenMainView(int barlevel)
       }
     }
     
+    i = 0;
+    for(BaseLiquid bsl : baseL){
+      bsl.show(i);
+      i += 120;
+    }
+    i = 0;
+    for(Accessories acs : accessor){
+      acs.show(i);
+      i += 120;
+    }
 
+  mixRect();
+
+}
+
+void bartenMainViewHitTest(){
+  int i = 0;
     //Iterate the Base Liquid
     for (Iterator iterator = baseL.iterator(); iterator.hasNext();) {
       BaseLiquid bsl = (BaseLiquid) iterator.next();
@@ -68,11 +84,11 @@ void bartenMainView(int barlevel)
       }
       i += 120;
    }
-  mixRect();
   if (mouseX > 720 && mouseX < 770 && mouseY > 435 && mouseY < 485 && mousePressed)
   {
       overBox = true;
       addItem = 1;
       startTime = millis();
+      println("overbox");
   }
 }

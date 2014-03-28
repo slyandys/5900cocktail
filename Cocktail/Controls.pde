@@ -32,6 +32,9 @@ void keyPressed() {
 
 void mousePressed()
 {
+      println("Tag use:"+tag);
+  bartenMainViewHitTest();
+
   if(tag != -1)
   {
     dragposY = mouseY;
