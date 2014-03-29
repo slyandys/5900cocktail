@@ -86,6 +86,36 @@ void showCustomerNeed()
   }  
 }
 
+void showPlayerScore()
+{
+   text("Score: " + playerscore , width / 2, 70);
+}
+
+void showCustomerFeedback()
+{
+  if(accuracy>90 && accuracy<=100)
+  {
+    text("It tastes excellent" , width / 2, 70);
+  }
+  else if(accuracy>80 && accuracy<=90)
+  {
+    text("It tastes good" , width / 2, 70);
+  }
+  else if(accuracy>70 && accuracy<=80)
+  {
+    text("It tastes fair" , width / 2, 70);
+  }
+  else if(accuracy>=60 && accuracy<=70)
+  {
+    text("It tastes fair" , width / 2, 70);
+  }
+  else if(accuracy<60)
+  {
+    text("It tastes sucks :(" , width / 2, 70);
+  }
+  
+}
+
 
 String buildNamePrompt(int level, Recipe recipe){
   String s = "Challenge" + barlevel + ": "+recipe.rName +'\n';

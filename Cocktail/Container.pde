@@ -59,37 +59,45 @@ public class Container {
       //      println("cocktail dose:" + ctail.cDose);
       print("[judge] barlevel==" + barlevel + "; ");
       println("[judge] steps == " + steps);
-      
-      
+
+
       Recipe targetRecipe = recip.get(barlevel);
       String targetName = targetRecipe.itemName.get(steps);
       float targetDose = targetRecipe.itemDose.get(steps);
       println ("[judge] ingredient " + steps + ": " + targetDose + "oz "+targetName);
-      
+
       println("[judge] current ingredient name:" + ctail.cName);
       println("[judge] current ingredient dose:" + ctail.cDose);
-      
+
       if (ctail.cName.equals(targetName) && ctail.cDose >= targetDose * 0.9 && ctail.cDose <= targetDose * 1.1) 
       {
-          println("[judge] Step correct!");
-          iterator.remove();
-          showError = false;
-          steps++;
-          
-          if (steps >= targetRecipe.itemDose.size())
+        println("[judge] Step correct!");
+        iterator.remove();
+        showError = false;
+        steps++;
+
+        if (steps >= targetRecipe.itemDose.size())
+        {
+          steps = 0;
+          if (screenNumber == 2 && orderNum < order.length)
           {
-            steps = 0;
-            barlevel++;
-            setUpNewLiquid(barlevel);
+            playerscore += accuracy;
+            orderNum++;
+            addonce = true;
+            return;
           }
+          barlevel++;
+
+
+          setUpNewLiquid(barlevel);
+        }
       } 
       else 
       {
-          println("[judge] Step incorrect!");
-          showError = true;
-          accuracy--;
+        println("[judge] Step incorrect!");
+        showError = true;
+        accuracy--;
       }
-      
     }
     counter = 0;
     nStrength = 0;

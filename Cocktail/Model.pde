@@ -9,6 +9,7 @@ void bartenMainView(int barlevel)
   else if(screenNumber == 2)
   {
     showCustomerNeed();
+    showPlayerScore();
   }
     //setUpNewLiquid(barlevel);
     int i = 0;
