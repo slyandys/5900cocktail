@@ -4,7 +4,7 @@ int nStrength;
 int nColour;
 int counter;
 float totaldose;
-int flags;
+int steps;
 int timepass = 0;
 
 public class Container {
@@ -24,7 +24,7 @@ public class Container {
     nStrength = 0;
     counter = 0;
     shotMaximum = 100;
-    flags = 0;
+    steps = 0;
   }
 
   //Add Base Liquid
@@ -58,13 +58,13 @@ public class Container {
       //      println("cocktail name:" + ctail.cName);
       //      println("cocktail dose:" + ctail.cDose);
       print("[judge] barlevel==" + barlevel + "; ");
-      println("[judge] flags == " + flags);
+      println("[judge] steps == " + steps);
       
       
       Recipe targetRecipe = recip.get(barlevel);
-      String targetName = targetRecipe.itemName.get(flags);
-      float targetDose = targetRecipe.itemDose.get(flags);
-      println ("[judge] ingredient " + flags + ": " + targetDose + "oz "+targetName);
+      String targetName = targetRecipe.itemName.get(steps);
+      float targetDose = targetRecipe.itemDose.get(steps);
+      println ("[judge] ingredient " + steps + ": " + targetDose + "oz "+targetName);
       
       println("[judge] current ingredient name:" + ctail.cName);
       println("[judge] current ingredient dose:" + ctail.cDose);
@@ -74,11 +74,11 @@ public class Container {
           println("[judge] Step correct!");
           iterator.remove();
           showError = false;
-          flags++;
+          steps++;
           
-          if (flags >= targetRecipe.itemDose.size())
+          if (steps >= targetRecipe.itemDose.size())
           {
-            flags = 0;
+            steps = 0;
             barlevel++;
             setUpNewLiquid(barlevel);
           }

@@ -12,11 +12,11 @@ public class Recipe {
     rName = recipeName;
     itemName = (ArrayList<String>) new ArrayList();
     itemDose = (ArrayList<Float>) new ArrayList();
-    for (String name : names){ //check if it works with processing.js
+    for (String name : names) { //check if it works with processing.js
       itemName.add(name);
     }
     //itemDose = (ArrayList<Float>) new ArrayList(dose);
-    for (Float dose: doses){
+    for (Float dose: doses) {
       itemDose.add(dose);
     }
     println("recipeName=" + rName);
@@ -25,18 +25,51 @@ public class Recipe {
   }
 }
 
-void addRecipes(){
+void addRecipes() {
   //Sunrise Tequila
-  String[] sunrise_name = {"Tequila", "orange juice", "grenadine syrup"};
-  float[] sunrise_dose = {1.5, 4.0, 0.5};
-  
+  String[] sunrise_name = {
+    "Tequila", "orange juice", "grenadine syrup"
+  };
+  float[] sunrise_dose = {
+    1.5, 4.0, 0.5
+  };
+
   //this does NOT work. -LN
   //name = {"Tequila", "orange juice", "grenadine syrup"};
   //dose =  {0.5, 4.0, 0.5};
-  recip.add(new Recipe("Sunrise Tequila",sunrise_name, sunrise_dose));
+
+
   //Blue Lagoon
-  String[] lagoon_name = {"Vodka", "Blue Curacao", "Sprite"};
-  float[] lagoon_dose = {1.0, 1.0, 10.0};
-  recip.add(new Recipe("Blue Lagoon",lagoon_name, lagoon_dose));
+  String[] lagoon_name = {
+    "Vodka", "Blue Curacao", "Sprite"
+  };
+  float[] lagoon_dose = {
+    1.0, 1.0, 10.0
+  };
+  
+  //Martine
+  String[] Martine_name = {
+    "Gin", "Absinthe", "Oliver"
+  };
+  float[] Martine_dose = {
+    4.0, 1.0, 1.0
+  };
+
+  //Teaching mode
+  if (screenNumber == 1)
+  {
+    recip.add(new Recipe("Sunrise Tequila", sunrise_name, sunrise_dose));
+    recip.add(new Recipe("Blue Lagoon", lagoon_name, lagoon_dose));
+  }
+  
+  //Story mode
+  else if(screenNumber == 2)
+  {
+    recip.add(new Recipe("Martine", Martine_name, Martine_dose));
+    recip.add(new Recipe("Blue Lagoon", lagoon_name, lagoon_dose));
+    recip.add(new Recipe("Sunrise Tequila", sunrise_name, sunrise_dose));
+  }
+
   println("yay!");
 }
+

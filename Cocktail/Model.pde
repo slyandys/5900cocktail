@@ -2,7 +2,14 @@ void bartenMainView(int barlevel)
 {
   clickdose += dragdose;
   
-  showGameChallenge();
+  if(screenNumber == 1)
+  {
+    showGameChallenge();
+  }
+  else if(screenNumber == 2)
+  {
+    showCustomerNeed();
+  }
     //setUpNewLiquid(barlevel);
     int i = 0;
     

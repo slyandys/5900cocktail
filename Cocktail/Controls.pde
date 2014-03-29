@@ -9,9 +9,9 @@ void keyPressed() {
       screenNumber = 1;
     }
   } 
-  //else if (key == '2') {
-  //  screenNumber = 2;
-  //} 
+  else if (key == '2') {
+    screenNumber = 2;
+  } 
   else if (key == ' ') {
     screenNumber++;
     setup();

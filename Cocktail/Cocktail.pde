@@ -32,10 +32,12 @@ Container container;
 //Visualiz
 float clickdose = 0.0;
 int dragposY = 0;
-Boolean dragable = true;
+Boolean dragable = true;  //default is true otherwise the first click won't available
 float dragdose = 0.0;
 
 //✓
+//Customer mechanism
+Boolean addonce = true;
 
 void setup() {
   size(800, 500);
@@ -61,11 +63,14 @@ void setup() {
   addItem = 0;
   //items = new String[3];
   //doses = new String[3];
+
+
+  //Blocking
+  //addRecipes();
   
   
-  addRecipes();
   setUpNewLiquid(barlevel);
-  println(buildRecipePrompt(recip.get(0)));
+  //println(buildRecipePrompt(recip.get(0)));
 }
 
 void draw() {
@@ -75,15 +80,31 @@ void draw() {
   }
   else if (screenNumber == 1) {
     Traditional();
+    
+    //In this case, add all the recipes for teaching mode
+    if(addonce)
+    {
+      addRecipes();
+      addonce = false;
+    }
   }
   else if (screenNumber == 2) {
-    FreeStyle();
+    Story();
+    
+    //In this case, add all the recipes for story mode
+    if(addonce)
+    {
+      addRecipes();
+      addonce = false;
+    }
   }
   else if (screenNumber == 3) {
     victory(barlevel);
   }
   else if (screenNumber == 4) {
     howToPlay();
+  }
+  else if (screenNumber == 5) {
   }
 }
 
@@ -114,15 +135,17 @@ void Traditional() {
 
 
 
-//Free Style Game Play
-void FreeStyle() {
-  text("Free Style", width / 2, 100);
+//Story Style
+void Story() {
+  text("Story Mode", width / 2, 30);
+  //barlevel = 2;
+  bartenMainView(barlevel);
 }
 
 void setUpNewLiquid(int barlevel) {
   baseL.clear();
   accessor.clear();
-  
+
   //level 0 cocktail recipes
   if (barlevel == 0) {
     baseL.add(new BaseLiquid("Tequila", 38, 200));
@@ -134,6 +157,12 @@ void setUpNewLiquid(int barlevel) {
     baseL.add(new BaseLiquid("Vodka", 45, 155));
     baseL.add(new BaseLiquid("Blue Curacao", 23, 180));
     accessor.add(new Accessories("Sprite", 3, 100));
+  }
+  else if(barlevel == 2)
+  {
+    baseL.add(new BaseLiquid("Gin", 55, 45));
+    baseL.add(new BaseLiquid("Absinthe", 55, 140));
+    accessor.add(new Accessories("Oliver", 3, 10));
   }
 }
 
