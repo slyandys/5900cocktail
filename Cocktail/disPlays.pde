@@ -32,6 +32,31 @@ void showMenu()
   text("Choose a way to start your Bartender career!", width / 2, height / 2 + 80);
 }
 
+void peekRecipe()
+{
+  pushStyle();
+  textAlign(LEFT);
+  text("Peek", 720, 45);
+  fill(200);
+  rect(720, 55, 50, 50);
+  popStyle();
+  
+  Recipe recipe = recip.get(barlevel);
+  
+  if (mousePressed && isPeek)//millis () - startTime < 3000
+  {
+    text(buildRecipePrompt(recipe), width / 2, 160);
+    accuracy--; //too must, can be adjust later...
+    print("The accuracy==="+accuracy);
+  }
+  else
+  {
+    //print("The accuracy==="+accuracy);
+    isPeek = false;
+  }
+  
+}
+
 void mixRect()
 {
   pushStyle();
@@ -65,15 +90,15 @@ void victory(int barlevel)
 void showGameChallenge()
 {
   text("~~level:" + barlevel + "~~", width / 2, 60);
-  text("Please mix them in order mentioned above" , width / 2, 50 + 50);
-  
+  text("Please mix them in order mentioned above", width / 2, 50 + 50);
+
   if (barlevel < recip.size())
   {
     Recipe recipe = recip.get(barlevel);
     text(buildNamePrompt(barlevel, recipe), width / 2, 130);
     text(buildRecipePrompt(recipe), width / 2, 160);
   }
-//  text("", width / 2, 180);
+  //  text("", width / 2, 180);
 }
 
 
@@ -82,52 +107,96 @@ void showCustomerNeed()
   if (barlevel < recip.size())
   {
     Recipe recipe = recip.get(barlevel);
-    text("Customer: A glass of " + recipe.rName + ", Please" , width / 2, 50);
-  }  
+    text("Customer "+ (orderNum+1) +": A glass of " + recipe.rName + ", Please", width / 2, 50);
+  }
 }
 
 void showPlayerScore()
 {
-   text("Score: " + playerscore , width / 2, 70);
+  text("Score: " + playerscore, 60, 70);
 }
 
 void showCustomerFeedback()
 {
-  if(accuracy>90 && accuracy<=100)
+  if (scoreRef>90 && scoreRef<=100)
   {
-    text("It tastes excellent" , width / 2, 70);
+    if (millis () - startTime < 3000) 
+    {
+      //displaying the customer feeling
+      text("It tastes excellent", width / 2, 70);
+    }
+    else
+    {
+      isShowFeeling = false;
+    }
   }
-  else if(accuracy>80 && accuracy<=90)
+  else if (scoreRef>80 && scoreRef<=90)
   {
-    text("It tastes good" , width / 2, 70);
+    if (millis () - startTime < 3000) 
+    {
+      //displaying the customer feeling
+      text("It tastes good", width / 2, 70);
+    }
+    else
+    {
+      isShowFeeling = false;
+    }
   }
-  else if(accuracy>70 && accuracy<=80)
+  else if (scoreRef>70 && scoreRef<=80)
   {
-    text("It tastes fair" , width / 2, 70);
+    if (millis () - startTime < 3000) 
+    {
+      //displaying the customer feeling
+      text("It tastes fair", width / 2, 70);
+    }
+    else
+    {
+      isShowFeeling = false;
+    }
   }
-  else if(accuracy>=60 && accuracy<=70)
+  else if (scoreRef>=60 && scoreRef<=70)
   {
-    text("It tastes fair" , width / 2, 70);
+    if (millis () - startTime < 3000) 
+    {
+      //displaying the customer feeling
+      text("It tastes OK", width / 2, 70);
+    }
+    else
+    {
+      isShowFeeling = false;
+    }
   }
-  else if(accuracy<60)
+  else if (scoreRef<60)
   {
-    text("It tastes sucks :(" , width / 2, 70);
+    if (millis () - startTime < 3000) 
+    {
+      //displaying the customer feeling
+      text("It tastes sucks :(", width / 2, 70);
+    }
+    else
+    {
+      isShowFeeling = false;
+    }
   }
-  
 }
 
 
-String buildNamePrompt(int level, Recipe recipe){
+String buildNamePrompt(int level, Recipe recipe) {
   String s = "Challenge" + barlevel + ": "+recipe.rName +'\n';
   return s;
 }
 
-String buildRecipePrompt(Recipe recipe){
+String buildRecipePrompt(Recipe recipe) {
   String s = "You will need: ";
-  for (int i = 0; i < recipe.itemName.size() &&  i < recipe.itemName.size(); i++){
-    if (i != 0) {s += ", \n";}
-    if (i < steps) {s += "√";}
+  for (int i = 0; i < recipe.itemName.size() &&  i < recipe.itemName.size(); i++) {
+    if (i != 0) {
+      s += ", \n";
+    }
+    if (i < steps) {
+      s += "√";
+    }
     s += nf(recipe.itemDose.get(i), 1, 1) + "oz " + recipe.itemName.get(i);
   }
   return s;
 }
+

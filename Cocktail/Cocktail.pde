@@ -44,6 +44,9 @@ int[] order = {
 };
 int orderNum = 0;
 int playerscore = 0;
+int scoreRef = 0;
+Boolean isShowFeeling = false;
+Boolean isPeek = false;
 
 void setup() {
   size(800, 500);

@@ -81,8 +81,12 @@ public class Container {
           steps = 0;
           if (screenNumber == 2 && orderNum < order.length)
           {
+            println("[judge] The accuracy is: " + accuracy);
             playerscore += accuracy;
+            scoreRef = accuracy;
             orderNum++;
+            accuracy = 100;
+            isShowFeeling = true;
             addonce = true;
             return;
           }
@@ -96,6 +100,13 @@ public class Container {
       {
         println("[judge] Step incorrect!");
         showError = true;
+        isShowFeeling = false;
+        
+        //Unmemorize mechanism
+        //Could be remove if need to be memorized what inside the Shock..
+        iterator.remove();
+        
+        
         accuracy--;
       }
     }
