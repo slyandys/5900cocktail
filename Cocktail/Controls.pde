@@ -9,9 +9,9 @@ void keyPressed() {
       screenNumber = 1;
     }
   } 
-  //else if (key == '2') {
-  //  screenNumber = 2;
-  //} 
+  else if (key == '2') {
+    screenNumber = 2;
+  } 
   else if (key == ' ') {
     screenNumber++;
     setup();
@@ -32,6 +32,9 @@ void keyPressed() {
 
 void mousePressed()
 {
+  println("Tag use:"+tag);
+  bartenMainViewHitTest();
+
   if(tag != -1)
   {
     dragposY = mouseY;
@@ -48,7 +51,7 @@ void mouseReleased() {
     println("insight");
     println("Liquid use:"+itemName);
     println("Last Liquid use:"+itemName2);
-    println("Tag use:"+tag);
+    println("~Tag use:"+tag);
     dragdose = 0;
     if(!dragable){
       dragposY = mouseY;

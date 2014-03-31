@@ -4,7 +4,7 @@ int nStrength;
 int nColour;
 int counter;
 float totaldose;
-int flags;
+int steps;
 int timepass = 0;
 
 public class Container {
@@ -24,7 +24,7 @@ public class Container {
     nStrength = 0;
     counter = 0;
     shotMaximum = 100;
-    flags = 0;
+    steps = 0;
   }
 
   //Add Base Liquid
@@ -57,140 +57,58 @@ public class Container {
       CockTails ctail = (CockTails) iterator.next();
       //      println("cocktail name:" + ctail.cName);
       //      println("cocktail dose:" + ctail.cDose);
-      println("flags == " + flags);
-      if (barlevel == 0)
+      print("[judge] barlevel==" + barlevel + "; ");
+      println("[judge] steps == " + steps);
+
+
+      Recipe targetRecipe = recip.get(barlevel);
+      String targetName = targetRecipe.itemName.get(steps);
+      float targetDose = targetRecipe.itemDose.get(steps);
+      println ("[judge] ingredient " + steps + ": " + targetDose + "oz "+targetName);
+
+      println("[judge] current ingredient name:" + ctail.cName);
+      println("[judge] current ingredient dose:" + ctail.cDose);
+
+      if (ctail.cName.equals(targetName) && ctail.cDose >= targetDose * 0.9 && ctail.cDose <= targetDose * 1.1) 
       {
-        println("cocktail name:" + ctail.cName);
-        println("cocktail dose:" + ctail.cDose);
-        switch(flags)
+        println("[judge] Step correct!");
+        iterator.remove();
+        showError = false;
+        steps++;
+
+        if (steps >= targetRecipe.itemDose.size())
         {
-        case 0:
-          if (ctail.cName.equals("Tequila") && ctail.cDose >= 1.5*0.9 && ctail.cDose <= 1.5*1.1) 
+          steps = 0;
+          if (screenNumber == 2 && orderNum < order.length)
           {
-            println("BL correct~");
-            iterator.remove();
-            showError = false;
-            flags++;
+            println("[judge] The accuracy is: " + accuracy);
+            playerscore += accuracy;
+            scoreRef = accuracy;
+            orderNum++;
+            accuracy = 100;
+            isShowFeeling = true;
+            addonce = true;
+            return;
           }
-          else
-          {
-            //flags = 0;
-            println("BL incorrect~");
-            //mills = millis();
-            //mills = millis() + 10000;
-            showError = true;
-            accuracy--;
-            println("cocktail name:" + ctail.cName);
-            println("cocktail dose:" + ctail.cDose);
-          }
-          break;
-        case 1:
-          if (ctail.cName.equals("orange juice") && ctail.cDose >= 4*0.9 && ctail.cDose <= 4*1.1)
-          {
-            println("Ac correct~");
-            iterator.remove();
-            showError = false;
-            flags++;
-          }
-          else
-          {
-            println("Ac incorrect~");
-            showError = true;
-            accuracy--;
-            println("cocktail name:" + ctail.cName);
-            println("cocktail dose:" + ctail.cDose);
-            //flags = 0;
-          }
-          break;
-        case 2:
-          if (ctail.cName.equals("grenadine syrup") && ctail.cDose >= 0.5*0.9 && ctail.cDose <= 0.5*1.1)
-          {
-            println("AC2 correct~");
-            iterator.remove();
-            flags++;
-            barlevel = 1;
-            showError = false;
-          }
-          else
-          {
-            println("AC2 incorrect~");
-            showError = true;
-            accuracy--;
-            println("cocktail name:" + ctail.cName);
-            println("cocktail dose:" + ctail.cDose);
-            //flags = 0;
-          }
-          break;
+          barlevel++;
+
+
+          setUpNewLiquid(barlevel);
         }
-      }
-      else if (barlevel == 1)
+      } 
+      else 
       {
-        println("cocktail name:" + ctail.cName);
-        println("cocktail dose:" + ctail.cDose);
-        switch(flags)
-        {
-        case 0:
-          if (ctail.cName.equals("Vodka") && ctail.cDose == 1.0) 
-          {
-            println("BL correct~");
-            iterator.remove();
-            flags++;
-            showError = false;
-          }
-          else
-          {
-            //flags = 0;
-            println("BL incorrect~");
-            showError = true;
-            accuracy--;
-            println("cocktail name:" + ctail.cName);
-            println("cocktail dose:" + ctail.cDose);
-          }
-          break;
-        case 1:
-          if (ctail.cName.equals("Blue Curacao") && ctail.cDose == 1.0)
-          {
-            println("BL correct~");
-            iterator.remove();
-            flags++;
-            showError = false;
-          }
-          else
-          {
-            println("BL incorrect~");
-            showError = true;
-            accuracy--;
-            println("cocktail name:" + ctail.cName);
-            println("cocktail dose:" + ctail.cDose);
-            //flags = 0;
-          }
-          break;
-        case 2:
-          if (ctail.cName.equals("Sprite") && ctail.cDose == 10)
-          {
-            println("AC correct~");
-            iterator.remove();
-            flags++;
-            showError = false;
-          }
-          else
-          {
-            println("AC incorrect~");
-            showError = true;
-            accuracy--;
-            println("cocktail name:" + ctail.cName);
-            println("cocktail dose:" + ctail.cDose);
-            //flags = 0;
-          }
-          break;
-        }
+        println("[judge] Step incorrect!");
+        showError = true;
+        isShowFeeling = false;
+        
+        //Unmemorize mechanism
+        //Could be remove if need to be memorized what inside the Shock..
+        iterator.remove();
+        
+        
+        accuracy--;
       }
-//      if (flags == 3)
-//      {
-//        println("You make the Sunrise Tequila");
-//        flag = 0;
-//        screenNumber = 3;
-//      }
     }
     counter = 0;
     nStrength = 0;

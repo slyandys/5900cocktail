@@ -1,11 +1,11 @@
-public class Accessories {
+public class Accessories extends Ingredient {
   String Name;           //the name of the accessory
-  int Saccharinity;      //five ranks from 1 to 5 measures the percentage of sweet(sweetness).5 is the sweetest
+  int Strength;      //five ranks from 1 to 5 measures the percentage of sweet(sweetness).5 is the sweetest
   int Colour;
 
   Accessories(String name, int strength, int colour) {
     Name = name;
-    Saccharinity = strength;
+    Strength = strength;
     Colour = colour;
   }
 

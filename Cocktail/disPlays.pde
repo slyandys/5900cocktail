@@ -28,7 +28,7 @@ void showMenu()
   fill(0);
   text("Bartender", width / 2, 200);
   text("1-Traditional", width / 2, height / 2);
-  //text("2-Free Style", width / 2, height / 2 + 40);
+  text("2-Story", width / 2, height / 2 + 40);
   text("Choose a way to start your Bartender career!", width / 2, height / 2 + 80);
 }
 
@@ -36,7 +36,7 @@ void mixRect()
 {
   pushStyle();
   textAlign(LEFT);
-  text("Add", 720, 420);
+  text("Mix", 720, 420);
   fill(200);
   rect(720, 435, 50, 50);
   popStyle();
@@ -64,26 +64,114 @@ void victory(int barlevel)
 
 void showGameChallenge()
 {
-  text("level:" + barlevel, width / 2, 50);
-  switch(barlevel)
+  text("~~level:" + barlevel + "~~", width / 2, 60);
+  text("Please mix them in order mentioned above", width / 2, 50 + 50);
+
+  if (barlevel < recip.size())
   {
-  case 0:
-    text("Challenge "+ barlevel +": Sunrise Tequila", width / 2, 140);
-    text("You will need: Tequila(1.5oz), orange juice(4oz),grenadine syrup(0.5oz)", width / 2, 160);
-    break;
-  case 1:
-    text("Challenge "+ barlevel +": Blue Lagoon", width / 2, 140);
-    text("You will need: Vodka(1.0oz), Blue Curacao(1.0oz),Sprite(10.0oz)", width / 2, 160);
-    break;
+    Recipe recipe = recip.get(barlevel);
+    text(buildNamePrompt(barlevel, recipe), width / 2, 130);
+    text(buildRecipePrompt(recipe), width / 2, 160);
   }
-  text("Please mix them in order mentioned above", width / 2, 180);
+  //  text("", width / 2, 180);
 }
 
-String buildRecipePrompt(Recipe recipe){
+
+void showCustomerNeed()
+{
+  if (barlevel < recip.size())
+  {
+    Recipe recipe = recip.get(barlevel);
+    text("Customer "+ (orderNum+1) +": A glass of " + recipe.rName + ", Please", width / 2, 50);
+  }
+}
+
+void showPlayerScore()
+{
+  text("Score: " + playerscore, 60, 70);
+}
+
+void showCustomerFeedback()
+{
+  if (scoreRef>90 && scoreRef<=100)
+  {
+    if (millis () - startTime < 3000) 
+    {
+      //displaying the customer feeling
+      text("It tastes excellent", width / 2, 70);
+    }
+    else
+    {
+      isShowFeeling = false;
+    }
+  }
+  else if (scoreRef>80 && scoreRef<=90)
+  {
+    if (millis () - startTime < 3000) 
+    {
+      //displaying the customer feeling
+      text("It tastes good", width / 2, 70);
+    }
+    else
+    {
+      isShowFeeling = false;
+    }
+  }
+  else if (scoreRef>70 && scoreRef<=80)
+  {
+    if (millis () - startTime < 3000) 
+    {
+      //displaying the customer feeling
+      text("It tastes fair", width / 2, 70);
+    }
+    else
+    {
+      isShowFeeling = false;
+    }
+  }
+  else if (scoreRef>=60 && scoreRef<=70)
+  {
+    if (millis () - startTime < 3000) 
+    {
+      //displaying the customer feeling
+      text("It tastes OK", width / 2, 70);
+    }
+    else
+    {
+      isShowFeeling = false;
+    }
+  }
+  else if (scoreRef<60)
+  {
+    if (millis () - startTime < 3000) 
+    {
+      //displaying the customer feeling
+      text("It tastes sucks :(", width / 2, 70);
+    }
+    else
+    {
+      isShowFeeling = false;
+    }
+  }
+}
+
+
+String buildNamePrompt(int level, Recipe recipe) {
+  String s = "Challenge" + barlevel + ": "+recipe.rName +'\n';
+  return s;
+}
+
+String buildRecipePrompt(Recipe recipe) {
   String s = "You will need: ";
-  for (int i = 0; i < recipe.itemName.size() &&  i < recipe.itemName.size(); i++){
-    if (i != 0) {s += ", ";}
+  for (int i = 0; i < recipe.itemName.size() &&  i < recipe.itemName.size(); i++) {
+    if (i != 0) {
+      s += ", \n";
+    }
+    if (i < steps) {
+      s += "√";
+    }
     s += nf(recipe.itemDose.get(i), 1, 1) + "oz " + recipe.itemName.get(i);
   }
   return s;
 }
+
