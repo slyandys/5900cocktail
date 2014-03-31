@@ -4,7 +4,7 @@ int nStrength;
 int nColour;
 int counter;
 float totaldose;
-int flags;
+int steps;
 int timepass = 0;
 
 public class Container {
@@ -24,7 +24,7 @@ public class Container {
     nStrength = 0;
     counter = 0;
     shotMaximum = 100;
-    flags = 0;
+    steps = 0;
   }
 
   //Add Base Liquid
@@ -58,38 +58,57 @@ public class Container {
       //      println("cocktail name:" + ctail.cName);
       //      println("cocktail dose:" + ctail.cDose);
       print("[judge] barlevel==" + barlevel + "; ");
-      println("[judge] flags == " + flags);
-      
-      
+      println("[judge] steps == " + steps);
+
+
       Recipe targetRecipe = recip.get(barlevel);
-      String targetName = targetRecipe.itemName.get(flags);
-      float targetDose = targetRecipe.itemDose.get(flags);
-      println ("[judge] ingredient " + flags + ": " + targetDose + "oz "+targetName);
-      
+      String targetName = targetRecipe.itemName.get(steps);
+      float targetDose = targetRecipe.itemDose.get(steps);
+      println ("[judge] ingredient " + steps + ": " + targetDose + "oz "+targetName);
+
       println("[judge] current ingredient name:" + ctail.cName);
       println("[judge] current ingredient dose:" + ctail.cDose);
-      
+
       if (ctail.cName.equals(targetName) && ctail.cDose >= targetDose * 0.9 && ctail.cDose <= targetDose * 1.1) 
       {
-          println("[judge] Step correct!");
-          iterator.remove();
-          showError = false;
-          flags++;
-          
-          if (flags >= targetRecipe.itemDose.size())
+        println("[judge] Step correct!");
+        iterator.remove();
+        showError = false;
+        steps++;
+
+        if (steps >= targetRecipe.itemDose.size())
+        {
+          steps = 0;
+          if (screenNumber == 2 && orderNum < order.length)
           {
-            flags = 0;
-            barlevel++;
-            setUpNewLiquid(barlevel);
+            println("[judge] The accuracy is: " + accuracy);
+            playerscore += accuracy;
+            scoreRef = accuracy;
+            orderNum++;
+            accuracy = 100;
+            isShowFeeling = true;
+            addonce = true;
+            return;
           }
+          barlevel++;
+
+
+          setUpNewLiquid(barlevel);
+        }
       } 
       else 
       {
-          println("[judge] Step incorrect!");
-          showError = true;
-          accuracy--;
+        println("[judge] Step incorrect!");
+        showError = true;
+        isShowFeeling = false;
+        
+        //Unmemorize mechanism
+        //Could be remove if need to be memorized what inside the Shock..
+        iterator.remove();
+        
+        
+        accuracy--;
       }
-      
     }
     counter = 0;
     nStrength = 0;
