@@ -28,13 +28,14 @@ public class Container {
   }
 
   //Add Base Liquid
-  void addItemBL(String Name, int strength, int colour, float dose) {
+//  void addItemBL(String Name, int strength, int colour, float dose) {
+  void addItemBL(String Name, int strength, color colour, float dose) {
     //Dose = dose;
     //BaseL.add(new BaseLiquid(Name, strength, colour));
     //println("indexofbaseliquid:" + cocktail.indexOf(Name));
     //if(cocktail.indexOf((String)Name) == -1)
     //{
-    cocktail.add(new CockTails(Name, dose));
+    cocktail.add(new CockTails(Name, dose, colour));
     //}
     //else
     //{
@@ -45,14 +46,16 @@ public class Container {
   }
 
   //Add Accessories
-  void addItemAc(String Name, int saccharinity, int colour, float dose) {
-    cocktail.add(new CockTails(Name, dose));
+//  void addItemAc(String Name, int saccharinity, int colour, float dose) {
+  void addItemAc(String Name, int saccharinity, color colour, float dose) {
+    cocktail.add(new CockTails(Name, dose,colour));
     //Judging the cocktail
     judge();
   }
 
   //Judgement system
-  boolean judge() {
+  void judge() {
+    //showGlass(cocktail);
     for (Iterator iterator = cocktail.iterator(); iterator.hasNext();) {
       CockTails ctail = (CockTails) iterator.next();
       //      println("2 name:" + ctail.cName);
@@ -69,8 +72,7 @@ public class Container {
       println("[judge] current ingredient name:" + ctail.cName);
       println("[judge] current ingredient dose:" + ctail.cDose);
 
-      //if (ctail.cName.equals(targetName) && ctail.cDose >= targetDose * 0.9 && ctail.cDose <= targetDose * 1.1)
-     if (true) 
+      if (ctail.cName.equals(targetName) && ctail.cDose >= targetDose * 0.9 && ctail.cDose <= targetDose * 1.1) 
       {
         println("[judge] Step correct!");
         
@@ -92,7 +94,7 @@ public class Container {
             accuracy = 100;
             isShowFeeling = true;
             addonce = true;
-            return true;
+            return;
           } else if (screenNumber == 5){
             playerscore += accuracy;
             int oldbarlevel = barlevel;
@@ -101,7 +103,7 @@ public class Container {
             print("new barlevel ");println(barlevel); 
             accuracy = 100;
             //setUpNewLiquid(barlevel);
-            return true;
+            return;
           }
           barlevel++;
 
@@ -127,12 +129,10 @@ public class Container {
     counter = 0;
     nStrength = 0;
     nColour = 0;
-    return false;
+    return;
   }
 
   //Mix action - for showing the mixture colour
   void mix() {
-    //barlevel = int(random(recip.size())); 
-    //println( barlevel);
   }
 }

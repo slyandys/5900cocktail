@@ -11,6 +11,7 @@ void bartenMainView(int barlevel)
     showCustomerNeed();
     showPlayerScore();
     peekRecipe();
+    showGlass(container.cocktail);
     if(isShowFeeling) showCustomerFeedback();
   }
     //setUpNewLiquid(barlevel);
@@ -51,7 +52,7 @@ void bartenMainView(int barlevel)
     }
 
   mixRect();
-
+  clearRect();
 }
 
 void bartenMainViewHitTest(){
@@ -103,6 +104,21 @@ void bartenMainViewHitTest(){
       startTime = millis();
       println("overboxXXXXX");
   }
+  
+  //Clear Button
+  if (mouseX > 620 && mouseX < 670 && mouseY > 465 && mouseY < 490 && mousePressed)
+  {
+      if(!container.cocktail.isEmpty())
+      {
+        container.cocktail.clear();
+        println("Clearing....");
+      }
+      else
+      {
+        println("Nothing need to be cleared");
+      }
+  }
+  
   
   //Peek Button
   if (mouseX > 720 && mouseX < 770 && mouseY > 50 && mouseY < 100 && mousePressed)

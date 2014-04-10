@@ -30,8 +30,6 @@ int tag;
 int accuracy;
 Container container;
 
-
-
 //Visualiz
 float clickdose = 0.0;
 int dragposY = 0;
@@ -52,6 +50,10 @@ Boolean isPeek = false;
 
 //Final glass
 //the glass represent the final mixture of all the ingredients
+float glassbottomX=700.0;
+float glassbottomY=350.0;
+float glasstopX=0.0;
+float glasstopY=0.0;
 
 //challenge mode! ding ding ding
 int challenge_timeout = 0;
@@ -235,3 +237,4 @@ void setUpNewLiquid(int barlevel) {
       accessor.add(new Accessories("Oliver", 3, 181, 230, 29, 255));
   }
 }
+

@@ -69,6 +69,7 @@ void mouseReleased() {
       switch(itemChoose)
       {
       case 0:
+        
         container.addItemBL(itemName2, strength, colour, clickdose*0.01);//dose
         dragdose = 0;
         break;
@@ -113,3 +114,4 @@ void mouseDragged(){
     dragdose = (mouseY - dragposY)/10; 
   }
 }
+
