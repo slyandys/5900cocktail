@@ -24,7 +24,7 @@ int itemChoose;
 String itemName, itemName2;
 float dose;
 int strength;
-int colour;
+color colour;
 int flag;
 int tag;
 int accuracy;
@@ -47,6 +47,15 @@ int playerscore = 0;
 int scoreRef = 0;
 Boolean isShowFeeling = false;
 Boolean isPeek = false;
+
+//Final glass
+//the glass represent the final mixture of all the ingredients
+float glassbottomX=700.0;
+float glassbottomY=350.0;
+float glasstopX=0.0;
+float glasstopY=0.0;
+
+
 
 void setup() {
   size(800, 500);
@@ -165,34 +174,35 @@ void setUpNewLiquid(int barlevel) {
     //level 0 cocktail recipes
     if (barlevel == 0) {
       baseL.add(new BaseLiquid("Tequila", 38, 200));
-      accessor.add(new Accessories("orange juice", 2, 100));
-      accessor.add(new Accessories("grenadine syrup", 4, 120));
+      accessor.add(new Accessories("orange juice", 2, 255,201,14,255));
+      accessor.add(new Accessories("grenadine syrup", 4, 237,28,36,255));
     }
     else if (barlevel == 1)
     {
       baseL.add(new BaseLiquid("Vodka", 45, 155));
-      baseL.add(new BaseLiquid("Blue Curacao", 23, 180));
-      accessor.add(new Accessories("Sprite", 3, 100));
+      baseL.add(new BaseLiquid("Blue Curacao", 23, 0, 162, 232, 255));
+      accessor.add(new Accessories("Sprite", 3, 34,177,76,255));
+      
     }
     else if (barlevel == 2)
     {
       baseL.add(new BaseLiquid("Gin", 55, 45));
       baseL.add(new BaseLiquid("Absinthe", 55, 140));
-      accessor.add(new Accessories("Oliver", 3, 10));
+      accessor.add(new Accessories("Oliver", 3, 181, 230, 29, 255));
     }
   }
   //Story mode
   else if (screenNumber == 2)
   {
     baseL.add(new BaseLiquid("Tequila", 38, 200));
-    accessor.add(new Accessories("orange juice", 2, 100));
-    accessor.add(new Accessories("grenadine syrup", 4, 120));
+      accessor.add(new Accessories("orange juice", 2, 255,201,14,255));
+      accessor.add(new Accessories("grenadine syrup", 4, 237,28,36,255));
     baseL.add(new BaseLiquid("Vodka", 45, 155));
-    baseL.add(new BaseLiquid("Blue Curacao", 23, 180));
-    accessor.add(new Accessories("Sprite", 3, 100));
+      baseL.add(new BaseLiquid("Blue Curacao", 23, 0, 162, 232, 255));
+      accessor.add(new Accessories("Sprite", 3, 34,177,76,255));
     baseL.add(new BaseLiquid("Gin", 55, 45));
     baseL.add(new BaseLiquid("Absinthe", 55, 140));
-    accessor.add(new Accessories("Oliver", 3, 10));
+      accessor.add(new Accessories("Oliver", 3, 181, 230, 29, 255));
   }
 }
 

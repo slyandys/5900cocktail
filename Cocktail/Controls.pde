@@ -21,7 +21,7 @@ void keyPressed() {
   } 
   else if (key == 's' || key == 'S' ) {
     screenNumber = 1;
-  } 
+  }
   else {     // if other keys are inputted, give a warning
     //background(255);
     //fill(122);

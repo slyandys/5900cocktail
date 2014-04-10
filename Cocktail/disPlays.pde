@@ -67,6 +67,17 @@ void mixRect()
   popStyle();
 }
 
+void clearRect()
+{
+  pushStyle();
+  textAlign(LEFT);
+  text("Clear", 570, 490);
+  fill(100);
+  rect(620, 465, 50, 25);
+  popStyle();
+}
+
+
 void victory(int barlevel)
 {
   textAlign(CENTER);
@@ -178,6 +189,37 @@ void showCustomerFeedback()
       isShowFeeling = false;
     }
   }
+}
+
+void showGlass(ArrayList<CockTails> cocktail)
+{
+  float _glassbottomY;
+  
+  for (Iterator iterator = cocktail.iterator(); iterator.hasNext();) {
+      CockTails ctail = (CockTails) iterator.next();
+      
+//      Recipe targetRecipe = recip.get(barlevel);
+//      String targetName = targetRecipe.itemName.get(steps);
+//      float targetDose = targetRecipe.itemDose.get(steps);
+//      println ("[judge] ingredient " + steps + ": " + targetDose + "oz "+targetName);
+
+//      println("[showglass] current ingredient name:" + ctail.cName);
+//      println("[showglass] current ingredient dose:" + ctail.cDose);
+      
+      glassbottomY = glasstopY;
+      
+      glasstopY+=ctail.cDose;
+      
+//      _glassbottomY = glasstopY;
+//      println("[showglass] current glasstopY :" + glasstopY);
+      
+      //Show the final glass
+      pushStyle();
+      fill(ctail.Colour,255);
+      rect(glassbottomX, 350-glassbottomY,50, -(glasstopY-glassbottomY));
+      popStyle();
+  }
+  glasstopY = 0;
 }
 
 
