@@ -30,6 +30,8 @@ int tag;
 int accuracy;
 Container container;
 
+
+
 //Visualiz
 float clickdose = 0.0;
 int dragposY = 0;
@@ -51,7 +53,8 @@ Boolean isPeek = false;
 //Final glass
 //the glass represent the final mixture of all the ingredients
 
-
+//challenge mode! ding ding ding
+int challenge_timeout = 0;
 
 void setup() {
   size(800, 500);
@@ -124,6 +127,20 @@ void draw() {
     howToPlay();
   }
   else if (screenNumber == 5) {
+    //TODO!!
+    if(addonce ){
+          addRecipes();
+    barlevel = 0;
+    setUpNewLiquid(barlevel);
+      addonce = false;
+      
+      challenge_timeout = millis() + (60+3) * 1000;
+    }
+
+    
+    drawChallengeMode();
+
+    
   }
 }
 
@@ -161,6 +178,24 @@ void Story() {
   bartenMainView(barlevel);
 }
 
+void initChallengeMode(){
+  
+}
+
+void updateChallengeMode(){
+}
+
+void drawChallengeMode(){
+  if ((challenge_timeout - millis()) > 0){
+    bartenMainView(barlevel);
+    showGameChallenge();
+    showPlayerScore();
+    showTimerCountdown();
+  } else {
+    challengeVictory();
+  }
+}
+
 void setUpNewLiquid(int barlevel) {
   baseL.clear();
   accessor.clear();
@@ -187,7 +222,7 @@ void setUpNewLiquid(int barlevel) {
     }
   }
   //Story mode
-  else if (screenNumber == 2)
+  else if (screenNumber == 2 || screenNumber == 5)
   {
     baseL.add(new BaseLiquid("Tequila", 38, 200));
       accessor.add(new Accessories("orange juice", 2, 255,201,14,255));
@@ -200,4 +235,3 @@ void setUpNewLiquid(int barlevel) {
       accessor.add(new Accessories("Oliver", 3, 181, 230, 29, 255));
   }
 }
-

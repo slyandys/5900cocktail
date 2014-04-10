@@ -52,7 +52,7 @@ public class Container {
   }
 
   //Judgement system
-  void judge() {
+  boolean judge() {
     for (Iterator iterator = cocktail.iterator(); iterator.hasNext();) {
       CockTails ctail = (CockTails) iterator.next();
       //      println("2 name:" + ctail.cName);
@@ -69,7 +69,8 @@ public class Container {
       println("[judge] current ingredient name:" + ctail.cName);
       println("[judge] current ingredient dose:" + ctail.cDose);
 
-      if (ctail.cName.equals(targetName) && ctail.cDose >= targetDose * 0.9 && ctail.cDose <= targetDose * 1.1) 
+      //if (ctail.cName.equals(targetName) && ctail.cDose >= targetDose * 0.9 && ctail.cDose <= targetDose * 1.1)
+     if (true) 
       {
         println("[judge] Step correct!");
         
@@ -91,7 +92,16 @@ public class Container {
             accuracy = 100;
             isShowFeeling = true;
             addonce = true;
-            return;
+            return true;
+          } else if (screenNumber == 5){
+            playerscore += accuracy;
+            int oldbarlevel = barlevel;
+            while (barlevel == oldbarlevel)
+              {barlevel = int(random(float(recip.size())));}
+            print("new barlevel ");println(barlevel); 
+            accuracy = 100;
+            //setUpNewLiquid(barlevel);
+            return true;
           }
           barlevel++;
 
@@ -117,10 +127,12 @@ public class Container {
     counter = 0;
     nStrength = 0;
     nColour = 0;
+    return false;
   }
 
   //Mix action - for showing the mixture colour
   void mix() {
+    //barlevel = int(random(recip.size())); 
+    //println( barlevel);
   }
 }
-

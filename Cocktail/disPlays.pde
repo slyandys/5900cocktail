@@ -116,6 +116,23 @@ void showPlayerScore()
   text("Score: " + playerscore, 60, 70);
 }
 
+void challengeVictory()
+{
+  textAlign(CENTER);
+  textFont(f, 20);
+  fill(0);
+      text("Time's up! \n Your score: "+ playerscore, width / 2, 200);
+
+  text("Congratulations~", width / 2, height / 2);
+  text("Press ESC to exit the game", width / 2, height / 2 + 40);
+  text("Press SPACE to continue", width / 2, height / 2 + 80);
+}
+
+void showTimerCountdown()
+{
+  text("Time:" + str((challenge_timeout - millis())/1000), 700, 70);
+}
+
 void showCustomerFeedback()
 {
   if (scoreRef>90 && scoreRef<=100)
@@ -199,4 +216,3 @@ String buildRecipePrompt(Recipe recipe) {
   }
   return s;
 }
-

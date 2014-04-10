@@ -7,4 +7,3 @@ public class CockTails {
     cDose = dose;
   }
 }
-

@@ -1,4 +1,5 @@
 void keyPressed() {
+  addonce = true;
   if (key == '1') {
     if (howtoplay == 0) {
       screenNumber = 4;
@@ -21,8 +22,11 @@ void keyPressed() {
   } 
   else if (key == 's' || key == 'S' ) {
     screenNumber = 1;
-  } 
+  } else if (key == '3'){
+    screenNumber = 5;
+  }
   else {     // if other keys are inputted, give a warning
+    println(int(random(recip.size())));
     //background(255);
     //fill(122);
     //text("Please input a valid options~!", width / 2, 300);
@@ -109,4 +113,3 @@ void mouseDragged(){
     dragdose = (mouseY - dragposY)/10; 
   }
 }
-

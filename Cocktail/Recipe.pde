@@ -63,7 +63,7 @@ void addRecipes() {
   }
   
   //Story mode
-  else if(screenNumber == 2)
+  else if(screenNumber == 2 || screenNumber == 5)
   {
     recip.add(new Recipe("Sunrise Tequila", sunrise_name, sunrise_dose));
     recip.add(new Recipe("Blue Lagoon", lagoon_name, lagoon_dose));
@@ -72,4 +72,3 @@ void addRecipes() {
 
   println("yay!");
 }
-
