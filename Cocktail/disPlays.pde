@@ -29,8 +29,8 @@ void showMenu()
   text("Bartender", width / 2, 200);
   text("1-Traditional", width / 2, height / 2);
   text("2-Story", width / 2, height / 2 + 40);
-  text("3-Challenge", width / 2, height / 2 + 40);
-  text("Choose a way to start your Bartender career!", width / 2, height / 2 + 80);
+  text("3-Challenge", width / 2, height / 2 + 80);
+  text("Choose a way to start your Bartender career!", width / 2, height / 2 + 120);
 }
 
 void peekRecipe()
