@@ -32,6 +32,31 @@ void showMenu()
   text("Choose a way to start your Bartender career!", width / 2, height / 2 + 80);
 }
 
+void peekRecipe()
+{
+  pushStyle();
+  textAlign(LEFT);
+  text("Peek", 720, 45);
+  fill(200);
+  rect(720, 55, 50, 50);
+  popStyle();
+  
+  Recipe recipe = recip.get(barlevel);
+  
+  if (mousePressed && isPeek)//millis () - startTime < 3000
+  {
+    text(buildRecipePrompt(recipe), width / 2, 160);
+    accuracy--; //too must, can be adjust later...
+    print("The accuracy==="+accuracy);
+  }
+  else
+  {
+    //print("The accuracy==="+accuracy);
+    isPeek = false;
+  }
+  
+}
+
 void mixRect()
 {
   pushStyle();

@@ -10,6 +10,7 @@ void bartenMainView(int barlevel)
   {
     showCustomerNeed();
     showPlayerScore();
+    peekRecipe();
     if(isShowFeeling) showCustomerFeedback();
   }
     //setUpNewLiquid(barlevel);
@@ -93,11 +94,23 @@ void bartenMainViewHitTest(){
       }
       i += 120;
    }
+   
+  //Mix Button
   if (mouseX > 720 && mouseX < 770 && mouseY > 435 && mouseY < 485 && mousePressed)
   {
       overBox = true;
       addItem = 1;
       startTime = millis();
-      println("overbox");
+      println("overboxXXXXX");
   }
+  
+  //Peek Button
+  if (mouseX > 720 && mouseX < 770 && mouseY > 50 && mouseY < 100 && mousePressed)
+  {
+      isPeek = true;
+      //addItem = 1;
+      startTime = millis();
+      println("Let me just peekkk a little bitttt..");
+  }
+  
 }

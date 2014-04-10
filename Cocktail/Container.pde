@@ -55,7 +55,7 @@ public class Container {
   void judge() {
     for (Iterator iterator = cocktail.iterator(); iterator.hasNext();) {
       CockTails ctail = (CockTails) iterator.next();
-      //      println("cocktail name:" + ctail.cName);
+      //      println("2 name:" + ctail.cName);
       //      println("cocktail dose:" + ctail.cDose);
       print("[judge] barlevel==" + barlevel + "; ");
       println("[judge] steps == " + steps);
@@ -72,6 +72,9 @@ public class Container {
       if (ctail.cName.equals(targetName) && ctail.cDose >= targetDose * 0.9 && ctail.cDose <= targetDose * 1.1) 
       {
         println("[judge] Step correct!");
+        
+        //don't remove in order to add into the final glass
+        
         iterator.remove();
         showError = false;
         steps++;
@@ -104,7 +107,8 @@ public class Container {
         
         //Unmemorize mechanism
         //Could be remove if need to be memorized what inside the Shock..
-        iterator.remove();
+        //iterator.remove();
+        
         
         
         accuracy--;
